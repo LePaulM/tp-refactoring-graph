@@ -87,22 +87,28 @@ public class GraphReader {
 
 		/* Récupération du sens de circulation */
 		String sens = (String) feature.getAttribute("SENS");
-
+		
 		/* Création de l'arc pour le parcours en sens direct */
 		if (sens.equals(DOUBLE_SENS) || sens.equals(SENS_DIRECT)) {
-			Edge directEdge = new Edge(source, target);
-			directEdge.setId(id + "-direct");
-			directEdge.setSource(source);
-			directEdge.setTarget(target);
-			graph.getEdges().add(directEdge);
+			// Edge directEdge = new Edge(source, target);
+			// directEdge.setId(id + "-direct");
+			// directEdge.setSource(source);
+			// directEdge.setTarget(target);
+			// graph.getEdges().add(directEdge);
+			Edge diedge = graph.createEdge(source, target,(id + "-direct"));
+			diedge.setGeometry(geometry);
+
 		}
 		if (sens.equals(DOUBLE_SENS) || sens.equals(SENS_INVERSE)) {
 			/* Création de l'arc pour le parcours en sens opposé */
-			Edge reverseEdge = new Edge(source, target);
-			reverseEdge.setId(id + "-reverse");
-			reverseEdge.setSource(target);
-			reverseEdge.setTarget(source);
-			graph.getEdges().add(reverseEdge);
+			// Edge reverseEdge = new Edge(source, target);
+			// reverseEdge.setId(id + "-reverse");
+			// reverseEdge.setSource(target);
+			// reverseEdge.setTarget(source);
+			// graph.getEdges().add(reverseEdge);
+			Edge reedge = graph.createEdge(target, source,(id + "-reverse"));
+			reedge.setGeometry(geometry);
+
 		}
 	}
 
