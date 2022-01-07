@@ -95,7 +95,7 @@ public class Graph {
 	}
 
 	/**
-	 * Recherche des arcs sortant d'un sommet
+	 * Recherche des arcs entrant d'un sommet
 	 * 
 	 * @param vertex
 	 * @return

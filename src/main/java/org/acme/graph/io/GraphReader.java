@@ -90,19 +90,13 @@ public class GraphReader {
 
 		/* Création de l'arc pour le parcours en sens direct */
 		if (sens.equals(DOUBLE_SENS) || sens.equals(SENS_DIRECT)) {
-			Edge directEdge = new Edge(source, target);
-			directEdge.setId(id + "-direct");
-			directEdge.setSource(source);
-			directEdge.setTarget(target);
-			graph.getEdges().add(directEdge);
+			Edge directEdge = graph.createEdge(source, target, id + "-direct");
+			directEdge.setGeometry(geometry);
 		}
 		if (sens.equals(DOUBLE_SENS) || sens.equals(SENS_INVERSE)) {
 			/* Création de l'arc pour le parcours en sens opposé */
-			Edge reverseEdge = new Edge(source, target);
-			reverseEdge.setId(id + "-reverse");
-			reverseEdge.setSource(target);
-			reverseEdge.setTarget(source);
-			graph.getEdges().add(reverseEdge);
+			Edge reverseEdge = graph.createEdge(source, target, id + "-reverse");
+			reverseEdge.setGeometry((LineString)geometry.reverse());
 		}
 	}
 
@@ -123,4 +117,6 @@ public class GraphReader {
 			throw new RuntimeException("Unsupported geometry type : " + geometry.getGeometryType());
 		}
 	}
+
+
 }
