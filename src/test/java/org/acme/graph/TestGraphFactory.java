@@ -9,7 +9,7 @@ public class TestGraphFactory {
 
 	/**
 	 * d / / a--b--c
-	 * 
+	 *
 	 * @return
 	 */
 	public static Graph createGraph01() {
@@ -35,19 +35,19 @@ public class TestGraphFactory {
 		d.setCoordinate(new Coordinate(1.0, 1.0));
 		graph.getVertices().add(d);
 
-		Edge ab = new Edge();
+		Edge ab = new Edge(a, b);
 		ab.setId("ab");
 		ab.setSource(a);
 		ab.setTarget(b);
 		graph.getEdges().add(ab);
 
-		Edge bc = new Edge();
+		Edge bc = new Edge(a, b);
 		bc.setId("bc");
 		bc.setSource(b);
 		bc.setTarget(c);
 		graph.getEdges().add(bc);
 
-		Edge ad = new Edge();
+		Edge ad = new Edge(a, b);
 		ad.setId("ad");
 		ad.setSource(a);
 		ad.setTarget(d);

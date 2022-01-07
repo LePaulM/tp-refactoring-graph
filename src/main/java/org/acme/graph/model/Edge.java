@@ -33,7 +33,17 @@ public class Edge {
 	 */
 	private Vertex target;
 
-	public Edge() {
+
+	public Edge(Vertex source, Vertex target) {
+
+		if(source == null || target == null){
+			this.source = new Vertex();
+			this.target = new Vertex();
+
+		}else{
+			this.source = source;
+			this.target = target;
+		}
 
 	}
 
@@ -47,7 +57,7 @@ public class Edge {
 
 	/**
 	 * Source avec rendu JSON sous forme d'identifiant
-	 * 
+	 *
 	 * @return
 	 */
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -62,7 +72,7 @@ public class Edge {
 
 	/**
 	 * Cible avec rendu JSON sous forme d'identifiant
-	 * 
+	 *
 	 * @return
 	 */
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -77,7 +87,7 @@ public class Edge {
 
 	/**
 	 * dijkstra - coût de parcours de l'arc (distance géométrique)
-	 * 
+	 *
 	 * @return
 	 */
 	public double getCost() {
@@ -88,8 +98,8 @@ public class Edge {
 	public LineString getGeometry() {
 		GeometryFactory gf = new GeometryFactory();
 		return gf.createLineString(new Coordinate[] {
-			source.getCoordinate(),
-			target.getCoordinate()
+				source.getCoordinate(),
+				target.getCoordinate()
 		});
 	}
 
