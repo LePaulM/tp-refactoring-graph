@@ -102,11 +102,11 @@ public class Graph {
 	 */
 	public List<Edge> getInEdges(Vertex vertex) {
 		List<Edge> result = new ArrayList<>();
-		for (Edge candidate : edges) {
-			if (candidate.getTarget() != vertex) {
+		for (Vertex candidate : vertices) {
+			if (candidate != vertex) {
 				continue;
 			}
-			result.add(candidate);
+			result = candidate.getInEdges();
 		}
 		return result;
 	}
@@ -119,11 +119,11 @@ public class Graph {
 	 */
 	public List<Edge> getOutEdges(Vertex vertex) {
 		List<Edge> result = new ArrayList<>();
-		for (Edge candidate : edges) {
-			if (candidate.getSource() != vertex) {
+		for (Vertex candidate : vertices) {
+			if (candidate != vertex) {
 				continue;
 			}
-			result.add(candidate);
+			result = candidate.getOutEdges();
 		}
 		return result;
 	}

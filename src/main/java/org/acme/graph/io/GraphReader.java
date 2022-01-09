@@ -64,7 +64,7 @@ public class GraphReader {
 				dataStore.dispose();
 			}
 		}
-
+		System.out.println(graph.getEdges());
 		return graph;
 	}
 
